@@ -1,0 +1,6 @@
+@Rule34_HostAddress = http://localhost:5224
+
+GET {{Rule34_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
