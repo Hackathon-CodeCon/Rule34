@@ -13,7 +13,6 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApiDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("SqlConnection")));
 
-builder.Services.AddTransient<IAuthService, AuthService>();
 
 builder.Services.AddAutoMapper(typeof(DbToDtoMappingProfile));
 builder.Services.AddControllers();
