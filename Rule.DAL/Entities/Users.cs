@@ -15,6 +15,7 @@ namespace Rule.DAL.Entities
         public string? Username { get; set;}
         public int? Phone { get; set;}
         public string? Email { get; set; }
+        public string Password { get; set; }
 
         public ICollection<Posts>? Posts { get; set; }
         public ICollection<Pictures>? Pictures { get; set; }
