@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Rule.DAL.Repositories.Interfaces;
 
 namespace Rule.DAL.UnitOfWork.Interfaces
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
+        IRepository<TEntity> GetRepository<TEntity>() where TEntity : class;
+        void SaveChanges();
+        Task SaveChangesAsync();
     }
 }

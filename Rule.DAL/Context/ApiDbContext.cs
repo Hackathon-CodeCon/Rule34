@@ -1,6 +1,8 @@
-﻿namespace Rule.DAL.Context
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace Rule.DAL.Context
 {
-    public class ApiDbContext
+    public class ApiDbContext: DbContext
     {
     }
 }

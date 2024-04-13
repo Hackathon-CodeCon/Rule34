@@ -2,5 +2,6 @@
 {
     public interface IEntiy
     {
+        int Id { get; set; }
     }
 }
