@@ -21,5 +21,9 @@ namespace Rule.BL.Models
 
         public ICollection<PostsDTO>? Posts { get; set; }
         public byte[]? Pictures { get; set; }
+
+        [Required, DataType(DataType.Password)]
+        [Compare("Password", ErrorMessage = "Паролі не співпадають.")]
+        public string ConfirmPassword { get; set; }
     }
 }

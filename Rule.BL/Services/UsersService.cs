@@ -17,7 +17,6 @@ namespace Rule.BL.Services
     {
         private readonly IMapper _mapper;
         private readonly IRepository<Users> _repository;
-        private readonly UsersDTO _usersDTO;
         private readonly IUnitOfWork _unitOfWork;
         public UsersService(IUnitOfWork unitOfWork, IMapper mapper)
         {
@@ -32,12 +31,13 @@ namespace Rule.BL.Services
                    string namet when value is string => $"Фонд з назваю {namet} вже існує",
                    _ => "Something has gone wrong"
                };
+
         public async Task<Users> GetUserByUsername(string username)
         {
             try
             {
                 var user = await _repository.Get()
-                    .FirstOrDefaultAsync(x => x.Username.ToUpper().Trim() == _usersDTO.Username.ToUpper().Trim());
+                    .FirstOrDefaultAsync(x => x.Username.ToUpper().Trim() == username.ToUpper().Trim());
 
                 if (user is null)
                 {

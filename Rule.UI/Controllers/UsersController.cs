@@ -1,7 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Rule.BL.Models;
 using Rule.BL.Services;
 using Rule.Common.Extensions;
+using Rule.DAL.Entities;
+using System.Security.Claims;
 
 namespace Rule.UI.Controllers
 {
@@ -19,8 +25,66 @@ namespace Rule.UI.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Registration()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
         [HttpPost]
-        public async Task<ActionResult> CreateAsync(UsersDTO newUsers)
+        public async Task<ActionResult> Login(LoginViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            try
+            {
+                // Ваша логіка для взаємодії з базою даних
+                var user = await _service.GetUserByUsername(model.Username);
+
+                if (user == null)
+                {
+                    ModelState.AddModelError("", "Користувача з таким username не знайдено.");
+                    return View(model);
+                }
+
+                if (user.Username != model.Username || user.Password != model.Password)
+                {
+                    ModelState.AddModelError("", "Неправильний логін або пароль.");
+                    return View(model);
+                }
+
+                // Все гаразд, можна авторизувати користувача
+                // Наприклад, установка кукі або інше
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Виникла помилка під час входу.");
+                return View(model);
+            }
+        }
+
+
+
+        [HttpPost]
+        public async Task<ActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            TempData["SuccessMessage"] = "Logout successful";
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> RegistrationAsync(UsersDTO newUsers)
         {
             if (!ModelState.IsValid)
             {
@@ -35,7 +99,7 @@ namespace Rule.UI.Controllers
             try
             {
                 var createdUsers = await _service.CreateAsync(newUsers);
-                TempData["SuccessMessage"] = "Фонд успішно створено!";
+                TempData["SuccessMessage"] = "Користувач успішно зареєструвався!";
                 return RedirectToAction("Index");
             }
             catch (DuplicateItemException ex)
