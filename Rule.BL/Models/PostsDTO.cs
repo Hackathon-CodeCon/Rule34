@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Rule.DAL.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace Rule.BL.Models
 {
@@ -12,7 +13,7 @@ namespace Rule.BL.Models
         public int? FinishSum { get; set; }
         [Required]
         public DateTime CreationTime { get; set; }
-        public int? UsersId { get; set; }
+        public Users Users { get; set; }
         public int? StatusPostId { get; set; }
         public int? TypePostId { get; set; }
         public string? Link { get; set; }
