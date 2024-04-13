@@ -40,10 +40,9 @@ namespace Rule.BL.Services
                     Description = newEntity.Description.Trim(),
                     FinishSum = newEntity.FinishSum,
                     CreationTime = newEntity.CreationTime,
-                    UsersId = default,
+                    Users = default,
                     StatusPostId = default,
                     TypePostId = default,
-                    Link = newEntity.Link.Trim(),
                     FoundationsId = default,
                     PicturesPosts = newEntity.PicturesPosts
                 };
@@ -96,11 +95,11 @@ namespace Rule.BL.Services
                 var existsDescription = await _repository.Get()
                    .AnyAsync(x => x.Description.ToUpper().Trim() == editEntity.Description.ToUpper().Trim());
 
-                var existsLink = await _repository.Get()
-                   .AnyAsync(x => x.Link.ToUpper().Trim() == editEntity.Link.ToUpper().Trim());
-
-                if (existsName && existsDescription && existsLink)
+                if (existsName && existsDescription)
                     throw new DuplicateItemException(ExceptionMessage(editEntity.Name));
+                // забрав    
+                var existsLink = await _repository.Get()
+                    .AnyAsync(x => x.Link.ToUpper().Trim() == editEntity.Link.ToUpper().Trim());
 
                 _mapper.Map(editEntity, currentEntity);
                 await _unitOfWork.SaveChangesAsync();
@@ -130,8 +129,8 @@ namespace Rule.BL.Services
         private string ExceptionMessage(object? value = null) =>
             value switch
             {
-                int idt when value is int => $"Фонд з id: {idt} ще/вже не існує!",
-                string namet when value is string => $"Фонд з назваю {namet} вже існує",
+                int idt when value is int => $"Пост з id: {idt} ще/вже не існує!",
+                string namet when value is string => $"Пост з назваю {namet} вже існує",
                 _ => "Something has gone wrong"
             };
     }
