@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Rule.BL.AutoMapper;
+using Rule.BL.Models.Interfaces;
+using Rule.BL.Services;
 using Rule.DAL.Context;
 using Rule.UI.DI;
 
@@ -10,6 +12,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApiDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("SqlConnection")));
+
 
 builder.Services.AddAutoMapper(typeof(DbToDtoMappingProfile));
 builder.Services.AddControllers();
