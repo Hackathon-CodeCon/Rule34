@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Rule.BL.AutoMapper;
+using Rule.BL.Models.Interfaces;
+using Rule.BL.Services;
 using Rule.DAL.Context;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +11,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApiDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("SqlConnection")));
+
+builder.Services.AddTransient<IAuthService, AuthService>();
 
 builder.Services.AddAutoMapper(typeof(DbToDtoMappingProfile));
 builder.Services.AddControllers();
