@@ -88,6 +88,68 @@ namespace Rule.BL.Services
                 throw new ServerErrorException(ex.Message, ex);
             }
         }
+        public async Task<ICollection<UsersDTO>> GetAllAsync()
+        {
+            try
+            {
+                return _mapper.Map<ICollection<UsersDTO>>(await _repository.GetAllAsync());
+            }
+            catch (DbUpdateException ex)
+            {
+                throw new ServerErrorException(ex.Message, ex);
+            }
+        }
+
+        public async Task<UsersDTO> GetByIdAsync(int id)
+        {
+            try
+            {
+                return _mapper.Map<UsersDTO>(await _repository.GetByIdAsync(id)) ??
+                    throw new InvalidIdException(ExceptionMessage(id));
+            }
+            catch (DbUpdateException ex)
+            {
+                throw new ServerErrorException(ex.Message, ex);
+            }
+        }
+
+        public async Task<UsersDTO> UpdateAsync(UsersDTO updateUsers)
+        {
+            try
+            {
+                var currentEntity = await _repository.GetByIdAsync(updateUsers.Id) ??
+                     throw new InvalidIdException(ExceptionMessage(updateUsers.Id));
+
+                var existsName = await _repository.Get()
+                   .AnyAsync(x => x.Username.ToUpper().Trim() == updateUsers.Username.ToUpper().Trim());
+
+                if (existsName)
+                    throw new DuplicateItemException(ExceptionMessage(updateUsers.Username));
+
+                _mapper.Map(updateUsers, currentEntity);
+                await _unitOfWork.SaveChangesAsync();
+                return updateUsers;
+            }
+            catch (DbUpdateException ex)
+            {
+                throw new ServerErrorException(ex.Message, ex);
+            }
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            try
+            {
+                var deleteUsers = await _repository.GetByIdAsync(id) ??
+                    throw new InvalidIdException(ExceptionMessage(id));
+                await _repository.DeleteAsync(deleteUsers);
+                await _unitOfWork.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                throw new ServerErrorException(ex.Message, ex);
+            }
+        }
 
     }
 }
