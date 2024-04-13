@@ -1,1 +1,24 @@
-﻿
+﻿@model Rule.BL.Models.FoundationsDTO
+
+<h2>Foundation Details</h2>
+
+<div>
+    <h4>Name:</h4>
+    <p>@Model.Name</p>
+</div>
+<div>
+    <h5>Description:</h5>
+    <p>@Model.Description</p>
+</div>
+<div>
+    <h5>Link:</h5>
+    <p>@Model.Link</p>
+</div>
+<div>
+    <h5>Image:</h5>
+    <p>@Model.Pictures</p>
+</div>
+
+<form asp-controller="Foundations" asp-action="Index" method="post">
+    <button type="submit" class="btn btn-danger">Return</button>
+</form>

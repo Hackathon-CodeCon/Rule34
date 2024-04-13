@@ -1,5 +1,12 @@
 ﻿@model Rule.BL.Models.FoundationsDTO
 
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
 <form asp-controller="Foundations" asp-action="Create" method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 

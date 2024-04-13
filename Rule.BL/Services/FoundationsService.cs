@@ -24,6 +24,18 @@ namespace Rule.BL.Services
         {
             try
             {
+                var existsName = await _repository.Get()
+                   .AnyAsync(x => x.Name.ToUpper().Trim() == newEntity.Name.ToUpper().Trim());
+
+                var existsDescription = await _repository.Get()
+                   .AnyAsync(x => x.Description.ToUpper().Trim() == newEntity.Description.ToUpper().Trim());
+
+                var existsLink = await _repository.Get()
+                   .AnyAsync(x => x.Link.ToUpper().Trim() == newEntity.Link.ToUpper().Trim());
+
+                if (existsName && existsDescription && existsLink)
+                    throw new DuplicateItemException(ExceptionMessage(newEntity.Name));
+
                 var entity = new Foundations
                 {
                     Id = default,
@@ -74,10 +86,16 @@ namespace Rule.BL.Services
                 var currentEntity = await _repository.GetByIdAsync(editEntity.Id) ??
                     throw new InvalidIdException(ExceptionMessage(editEntity.Id));
 
-                var tagExists = await _repository.Get()
-                    .AnyAsync(x => x.Name.ToUpper().Trim() == editEntity.Name.ToUpper().Trim());
+                var existsName = await _repository.Get()
+                   .AnyAsync(x => x.Name.ToUpper().Trim() == editEntity.Name.ToUpper().Trim());
 
-                if (tagExists)
+                var existsDescription = await _repository.Get()
+                   .AnyAsync(x => x.Description.ToUpper().Trim() == editEntity.Description.ToUpper().Trim());
+
+                var existsLink = await _repository.Get()
+                   .AnyAsync(x => x.Link.ToUpper().Trim() == editEntity.Link.ToUpper().Trim());
+
+                if (existsName && existsDescription && existsLink)
                     throw new DuplicateItemException(ExceptionMessage(editEntity.Name));
 
                 _mapper.Map(editEntity, currentEntity);

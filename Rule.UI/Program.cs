@@ -14,6 +14,15 @@ builder.Services.AddDbContext<ApiDbContext>(options => options.UseSqlServer(
 builder.Services.AddAutoMapper(typeof(DbToDtoMappingProfile));
 builder.Services.AddControllers();
 
+builder.Services.AddCors(options =>
+    options.AddPolicy("AllowAnyOrigin", builder =>
+    {
+        builder.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    })
+    );
+
 builder.Services.AddDependencyInjections();
 
 var app = builder.Build();

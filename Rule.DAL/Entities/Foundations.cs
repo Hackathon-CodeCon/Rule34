@@ -9,7 +9,7 @@ namespace Rule.DAL.Entities
         public int Id { get; set; }
         [MaxLength(200)]
         public required string Name { get; set; }  
-        [Column(TypeName = "text"), MaxLength(1500)]
+        [MaxLength(1500)]
         public required string Description { get; set; }
         public required string Link { get; set; }
 
