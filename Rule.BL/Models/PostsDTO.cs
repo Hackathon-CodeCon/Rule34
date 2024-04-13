@@ -17,8 +17,7 @@ namespace Rule.BL.Models
         public int? TypePostId { get; set; }
         public string? Link { get; set; }
         public int? FoundationsId { get; set; }
-
         [Required]
-        public ICollection<PicturesPostDTO> PicturesPosts { get; set; }
+        public byte[] PicturesPosts { get; set; }
     }
 }

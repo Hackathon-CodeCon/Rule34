@@ -20,6 +20,6 @@ namespace Rule.BL.Models
         public string Password { get; set; }
 
         public ICollection<PostsDTO>? Posts { get; set; }
-        public ICollection<PicturesDTO>? Pictures { get; set; }
+        public byte[]? Pictures { get; set; }
     }
 }

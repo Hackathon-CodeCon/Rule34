@@ -18,6 +18,6 @@ namespace Rule.DAL.Entities
         public required string Password { get; set; }
 
         public ICollection<Posts>? Posts { get; set; }
-        public ICollection<Pictures>? Pictures { get; set; }
+        public byte[]? Pictures { get; set; }
     }
 }

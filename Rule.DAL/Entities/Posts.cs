@@ -23,7 +23,6 @@ namespace Rule.DAL.Entities
         public string? Link { get; set; }
         public int FoundationsId {  get; set; }
         public virtual Foundations Foundations { get; set; }
-
-        public required ICollection<PicturesPost> PicturesPosts { get; set; }
+        public required byte[] PicturesPosts { get; set; }
     }
 }

@@ -17,8 +17,6 @@ namespace Rule.UI.DI
             services.AddTransient<TypePostServices>();
             services.AddTransient<StatusPostService>();
             services.AddTransient<PostsService>();
-            services.AddTransient<PicturesPostService>();
-            services.AddTransient<PicturesService>();
             services.AddTransient<FoundationsService>();
         }
     }

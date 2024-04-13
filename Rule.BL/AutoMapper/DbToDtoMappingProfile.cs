@@ -9,8 +9,6 @@ namespace Rule.BL.AutoMapper
         public DbToDtoMappingProfile()
         {
             CreateMap<Foundations, FoundationsDTO>().ReverseMap();
-            CreateMap<Pictures, PicturesDTO>().ReverseMap();
-            CreateMap<PicturesPost, PicturesPostDTO>().ReverseMap();
             CreateMap<Posts, PostsDTO>().ReverseMap();
             CreateMap<StatusPost, StatusPostDTO>().ReverseMap();
             CreateMap<TypePost, TypePostDTO>().ReverseMap();
