@@ -5,6 +5,8 @@ namespace Rule.BL.Models
     public class PostsDTO
     {
         public int Id { get; set; }
+        [Required, MaxLength(200)]
+        public string Name { get; set; }
         [Required, MaxLength(1500)]
         public string Description { get; set; }
         public int? FinishSum { get; set; }

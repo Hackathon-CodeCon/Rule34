@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Rule.Common\Rule.Common.csproj" />
     <ProjectReference Include="..\Rule.DAL\Rule.DAL.csproj" />
   </ItemGroup>
 
