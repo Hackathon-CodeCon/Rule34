@@ -43,7 +43,7 @@ namespace Rule.BL.Services
                     Users = default,
                     StatusPostId = default,
                     TypePostId = default,
-                    FoundationsId = default,
+                    Foundations = default,
                     PicturesPosts = newEntity.PicturesPosts
                 };
 

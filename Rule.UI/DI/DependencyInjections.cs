@@ -12,10 +12,7 @@ namespace Rule.UI.DI
         {
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-
             services.AddTransient<UsersService>();
-            services.AddTransient<TypePostServices>();
-            services.AddTransient<StatusPostService>();
             services.AddTransient<PostsService>();
             services.AddTransient<FoundationsService>();
         }

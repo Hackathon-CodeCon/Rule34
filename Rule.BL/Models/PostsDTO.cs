@@ -17,7 +17,7 @@ namespace Rule.BL.Models
         public int? StatusPostId { get; set; }
         public int? TypePostId { get; set; }
         public string? Link { get; set; }
-        public int? FoundationsId { get; set; }
+        public Foundations Foundations { get; set; }
         [Required]
         public byte[] PicturesPosts { get; set; }
     }

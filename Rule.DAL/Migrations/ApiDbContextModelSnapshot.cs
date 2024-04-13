@@ -49,7 +49,7 @@ namespace Rule.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Foundations");
+                    b.ToTable("Foundations", (string)null);
                 });
 
             modelBuilder.Entity("Rule.DAL.Entities.Posts", b =>
@@ -105,7 +105,7 @@ namespace Rule.DAL.Migrations
 
                     b.HasIndex("UsersId");
 
-                    b.ToTable("Posts");
+                    b.ToTable("Posts", (string)null);
                 });
 
             modelBuilder.Entity("Rule.DAL.Entities.StatusPost", b =>
@@ -123,7 +123,7 @@ namespace Rule.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("StatusPosts");
+                    b.ToTable("StatusPosts", (string)null);
                 });
 
             modelBuilder.Entity("Rule.DAL.Entities.TypePost", b =>
@@ -141,7 +141,7 @@ namespace Rule.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TypePosts");
+                    b.ToTable("TypePosts", (string)null);
                 });
 
             modelBuilder.Entity("Rule.DAL.Entities.Users", b =>
@@ -183,7 +183,7 @@ namespace Rule.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("Rule.DAL.Entities.Posts", b =>
