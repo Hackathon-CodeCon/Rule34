@@ -20,4 +20,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Rule.BL\Rule.BL.csproj" />
+    <ProjectReference Include="..\Rule.Common\Rule.Common.csproj" />
+    <ProjectReference Include="..\Rule.DAL\Rule.DAL.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Rule.DAL.Entities
 {
@@ -12,10 +7,12 @@ namespace Rule.DAL.Entities
     {
         [Key, Column(TypeName = "tinyint")]
         public int Id { get; set; }
-        [Column(TypeName = "text"), MaxLength(1500)]
+        [MaxLength(200)]
+        public required string Name { get; set; }  
+        [MaxLength(1500)]
         public required string Description { get; set; }
         public required string Link { get; set; }
 
-        public ICollection<Pictures>? Pictures { get; set; }
+        public byte[]? Pictures { get; set; }
     }
 }

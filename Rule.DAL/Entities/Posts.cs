@@ -7,9 +7,11 @@ namespace Rule.DAL.Entities
     {
         [Key, Column(TypeName = "tinyint")]
         public int Id { get; set; }
-        [Column(TypeName = "text"), MaxLength(1500)]
+        [MaxLength(200)]
+        public required string Name { get; set; }
+        [MaxLength(1500)]
         public required string Description { get; set; }
-        public required int FinishSum {  get; set; }
+        public int? FinishSum {  get; set; }
         [DataType(DataType.Date)]
         public required DateTime CreationTime { get; set; }
         public int UsersId { get; set; }
@@ -18,10 +20,9 @@ namespace Rule.DAL.Entities
         public virtual StatusPost StatusPost { get; set; }
         public int TypePostId {  get; set; }
         public virtual TypePost TypePost { get; set; }
-        public required string Link { get; set; }
+        public string? Link { get; set; }
         public int FoundationsId {  get; set; }
         public virtual Foundations Foundations { get; set; }
-
-        public required ICollection<PicturesPost> PicturesPosts { get; set; }
+        public required byte[] PicturesPosts { get; set; }
     }
 }

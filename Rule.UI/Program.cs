@@ -1,7 +1,32 @@
+using Microsoft.EntityFrameworkCore;
+using Rule.BL.AutoMapper;
+using Rule.BL.Models.Interfaces;
+using Rule.BL.Services;
+using Rule.DAL.Context;
+using Rule.UI.DI;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<ApiDbContext>(options => options.UseSqlServer(
+    builder.Configuration.GetConnectionString("SqlConnection")));
+
+
+builder.Services.AddAutoMapper(typeof(DbToDtoMappingProfile));
+builder.Services.AddControllers();
+
+builder.Services.AddCors(options =>
+    options.AddPolicy("AllowAnyOrigin", builder =>
+    {
+        builder.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    })
+    );
+
+builder.Services.AddDependencyInjections();
 
 var app = builder.Build();
 
