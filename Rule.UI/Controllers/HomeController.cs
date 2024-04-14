@@ -26,6 +26,11 @@ namespace Rule.UI.Controllers
             return View();
         }
 
+        public IActionResult House()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult SendPhoneNumber(string phoneNumber)
         {
