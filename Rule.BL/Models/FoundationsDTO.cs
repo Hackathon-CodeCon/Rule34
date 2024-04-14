@@ -13,6 +13,6 @@ namespace Rule.BL.Models
         [Required]
         public string Link { get; set; }
 
-        public byte[]? Pictures { get; set; }
+        public string? Pictures { get; set; }
     }
 }

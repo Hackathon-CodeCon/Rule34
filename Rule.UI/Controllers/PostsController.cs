@@ -18,6 +18,11 @@ namespace Rule.UI.Controllers
         {
             return View();
         }
+        
+        public IActionResult Create()
+        {
+            return View();
+        }
 
         [HttpPost]
         public async Task<ActionResult> CreateAsync(PostsDTO newPosts)

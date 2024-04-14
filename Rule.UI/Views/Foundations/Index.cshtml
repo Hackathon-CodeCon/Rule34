@@ -1,4 +1,7 @@
-﻿﻿@if (TempData["SuccessMessage"] != null)
+﻿<div style="margin-top: 50;">
+    ﻿
+
+@if (TempData["SuccessMessage"] != null)
 {
     <div class="alert alert-success">
         @TempData["SuccessMessage"]
@@ -11,7 +14,6 @@
         @TempData["ErrorMessage"]
     </div>
 }
-
 
 <form asp-controller="Foundations" asp-action="Create" method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -48,3 +50,5 @@
 
     <button type="submit" class="btn btn-primary">Delete</button>
 </form>
+
+</div>

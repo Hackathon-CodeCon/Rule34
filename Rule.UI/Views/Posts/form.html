@@ -1,25 +1,17 @@
-﻿@model Rule.BL.Models.PostsDTO
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="~/css/form.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="form.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap">
     <title>Document</title>
 </head>
 
 <body>
     <div class="Container">
-        @if (TempData["ErrorMessage"] != null)
-        {
-            <div class="alert alert-danger">
-                @TempData["ErrorMessage"]
-            </div>
-        }
-        <form asp-controller="Posts" asp-action="Create" method="post">
+        <form action="" method="post">
             <h2> Розміщення оголошення</h2>
             <div class="content">
                 <div>
@@ -30,12 +22,11 @@
                         <option value="zbir"> Збір</option>
                     </select>
                 </div>
-                
+
                 <div class="content">
                     <div class="input-box">
                         <label for="name">Заголовок оголошення</label>
-                        <input type="text" asp-for="Name" id="nameInput" placeholder="Напишіть назву для оголошення" required>
-                        <span asp-validation-for="Name" class="text-danger"></span>
+                        <input type="text" placeholder="Напишіть назву для оголошення" name="назва" required>
                     </div>
 
                     <div class="input-box">
@@ -52,21 +43,20 @@
                 
                 <div class="input-box">
                     <label for="photos">Фото</label>
-                        <div style="display: flex;">
-                            <input type="file" asp-for="PicturesPosts" id="photos" accept="image/*" style="flex: 1; visibility: hidden; position: absolute;">
-                            <button type="button" id="add-file-button">Додати файл</button>
-                        </div>
+                    <div style="display: flex;">
+                        <input type="file" id="photos" name="фото" accept="image/*"
+                            style="flex: 1; visibility: hidden; position: absolute;">
+                        <button type="button" id="add-file-button">Додати файл</button>
+                    </div>
                 </div>
 
                     <div class="input-box">
                         <label for="name">Додайте опис</label>
-                        <input type="text" asp-for="Description" id="descriptionInput" placeholder="Напишіть опис для оголошення" required>
-                        <span asp-validation-for="Description" class="text-danger"></span>
+                        <input type="text" placeholder="description" name="опис" required>
                     </div>
-
                     <div class="input-box sumField" id="sumField">
-                        <input type="text" asp-for="FinishSum" id="finishSumInput" placeholder="Сума" required>
-                        <span asp-validation-for="FinishSum" class="text-danger"></span>
+                        <label for="name">Необхідна сума</label>
+                        <input type="text" placeholder="sum" name="сума" required>
                     </div>
                 </div>
                 <div class="button-container">
@@ -88,6 +78,8 @@
                 sumField.style.display = "none";
             }
         }
+
+
 
          document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById('add-file-button').addEventListener('click', function () {

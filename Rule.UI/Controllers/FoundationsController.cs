@@ -20,7 +20,7 @@ namespace Rule.UI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateAsync(FoundationsDTO newFoundations)
+        public async Task<ActionResult> CreateAsync(FoundationsDTO newFoundations, IFormFile pictureFile)
         {
             if (!ModelState.IsValid)
             {

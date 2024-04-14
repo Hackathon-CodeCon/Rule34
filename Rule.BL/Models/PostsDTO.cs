@@ -14,11 +14,11 @@ namespace Rule.BL.Models
         [Required]
         public DateTime CreationTime { get; set; }
         public Users Users { get; set; }
-        public int? StatusPostId { get; set; }
-        public int? TypePostId { get; set; }
+        public StatusPost StatusPost { get; set; }
+        public TypePost TypePost { get; set; }
         public string? Link { get; set; }
         public Foundations Foundations { get; set; }
         [Required]
-        public byte[] PicturesPosts { get; set; }
+        public string PicturesPosts { get; set; }
     }
 }

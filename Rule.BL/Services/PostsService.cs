@@ -12,12 +12,16 @@ namespace Rule.BL.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepository<Posts> _repository;
+        private readonly IRepository<StatusPost> _statusPostRepository;
+        private readonly IRepository<TypePost> _typePostRepository;
         private readonly IMapper _mapper;
         public PostsService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _mapper = mapper;
             _unitOfWork = unitOfWork;
             _repository = _unitOfWork.GetRepository<Posts>();
+            _statusPostRepository = _unitOfWork.GetRepository<StatusPost>();
+            _typePostRepository = _unitOfWork.GetRepository<TypePost>();
         }
 
         public async Task<PostsDTO> CreateAsync(PostsDTO newEntity)
@@ -33,6 +37,11 @@ namespace Rule.BL.Services
                 if (existsName && existsDescription)
                     throw new DuplicateItemException(ExceptionMessage(newEntity.Name));
 
+                var statusPost = await _statusPostRepository.Get()
+                   .FirstOrDefaultAsync(x => x.Status.ToUpper().Trim() == newEntity.StatusPost.Status.ToUpper().Trim());
+                var typePost = await _typePostRepository.Get()
+                   .FirstOrDefaultAsync(x => x.Type.ToUpper().Trim() == newEntity.TypePost.Type.ToUpper().Trim());
+
                 var entity = new Posts
                 {
                     Id = default,
@@ -41,8 +50,8 @@ namespace Rule.BL.Services
                     FinishSum = newEntity.FinishSum,
                     CreationTime = newEntity.CreationTime,
                     Users = default,
-                    StatusPostId = default,
-                    TypePostId = default,
+                    StatusPost = statusPost,
+                    TypePost = typePost,
                     Foundations = default,
                     PicturesPosts = newEntity.PicturesPosts
                 };

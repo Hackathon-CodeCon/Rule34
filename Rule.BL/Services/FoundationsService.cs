@@ -41,7 +41,8 @@ namespace Rule.BL.Services
                     Id = default,
                     Name = newEntity.Name.Trim(),
                     Description = newEntity.Description.Trim(),
-                    Link = newEntity.Link.Trim()
+                    Link = newEntity.Link.Trim(),
+                    Pictures = newEntity.Pictures.Trim()
                 };
 
                 await _repository.AddAsync(entity);

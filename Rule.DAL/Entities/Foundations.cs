@@ -13,6 +13,6 @@ namespace Rule.DAL.Entities
         public required string Description { get; set; }
         public required string Link { get; set; }
 
-        public byte[]? Pictures { get; set; }
+        public string? Pictures { get; set; }
     }
 }

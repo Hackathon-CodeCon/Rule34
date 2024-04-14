@@ -20,7 +20,7 @@ namespace Rule.BL.Models
         public string Password { get; set; }
 
         public ICollection<PostsDTO>? Posts { get; set; }
-        public byte[]? Pictures { get; set; }
+        public string? Pictures { get; set; }
 
         [Required, DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "Паролі не співпадають.")]
