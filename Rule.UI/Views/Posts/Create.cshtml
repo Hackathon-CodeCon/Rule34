@@ -22,32 +22,35 @@
         <form asp-controller="Posts" asp-action="Create" method="post">
             <h2> Розміщення оголошення</h2>
             <div class="content">
-                <div>
-                    <label for="category">Категорія</label>
-                    <select id="category" name="category" required onchange="toggleSumField()">
-                        <option value="pets">Притулок для тварин</option>
-                        <option value="searching"> Пошук домівки</option>
-                        <option value="zbir"> Збір</option>
-                    </select>
+                <div class="input-box">
+                    <label for="statusPost">Статус поста</label>
+                    <input type="number" asp-for="StatusPostId" id="statusPost" placeholder="Притулок для тварин, Пошук домівки або Збір" required>
+                    <span asp-validation-for="StatusPostId" class="text-danger"></span>
                 </div>
                 
+                <div class="input-box">
+                    <label for="statusPost">Юзернейм</label>
+                    <input type="number" asp-for="UsersId" id="userName" placeholder="Юзернейм" required>
+                    <span asp-validation-for="UsersId" class="text-danger"></span>
+                </div>
+
+                <div class="input-box">
+                    <label for="dataPost">Час</label>
+                    <input type="date" asp-for="CreationTime" id="creationTime" placeholder="Час" required>
+                    <span asp-validation-for="CreationTime" class="text-danger"></span>
+                </div>
+
                 <div class="content">
                     <div class="input-box">
                         <label for="name">Заголовок оголошення</label>
-                        <input type="text" asp-for="Name" id="nameInput" placeholder="Напишіть назву для оголошення" required>
+                        <input type="text" asp-for="Name" id="nameInput" placeholder="Назва" required>
                         <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
 
                     <div class="input-box">
-                        <label for="type">Оберіть, що вам потрібно:</label><br>
-                        <div class="radio-container">
-                            <input type="radio" id="propunuyu_dopomogu" name="dopomoga" value="propunuyu_dopomogu"
-                                required>
-                            <label for="propunuyu_dopomogu">Пропоную допомогу</label><br>
-                            <input type="radio" id="potrebuyu_dopomogu" name="dopomoga" value="potrebuyu_dopomogu"
-                                required>
-                            <label for="potrebuyu_dopomogu">Потребую допомогу</label><br>
-                        </div>
+                        <label for="name">Введіть, що вам потрібно: </label>
+                        <input type="number" asp-for="TypePostId" id="typeInput" placeholder="Потребую допомогу або Пропоную допомогу" required>
+                        <span asp-validation-for="TypePostId" class="text-danger"></span>
                     </div>
                 
                 <div class="input-box">
@@ -64,9 +67,15 @@
                         <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
 
-                    <div class="input-box sumField" id="sumField">
+                    <div class="input-box" id="sumField">
                         <input type="text" asp-for="FinishSum" id="finishSumInput" placeholder="Сума" required>
                         <span asp-validation-for="FinishSum" class="text-danger"></span>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="name">Посилання</label>
+                        <input type="text" asp-for="Link" id="linkInput" placeholder="Посилання" required>
+                        <span asp-validation-for="Link" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="button-container">
@@ -78,21 +87,10 @@
 
 </body>
 <script>
-    function toggleSumField() {
-            var categorySelect = document.getElementById("category");
-            var sumField = document.getElementById("sumField");
-            console.log(sumField)
-            if (categorySelect.value === "zbir") {
-                sumField.style.display = "block";
-            } else {
-                sumField.style.display = "none";
-            }
-        }
-
-         document.addEventListener("DOMContentLoaded", function () {
-                document.getElementById('add-file-button').addEventListener('click', function () {
-                    document.getElementById('photos').click();
-                });
-            });
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById('add-file-button').addEventListener('click', function () {
+            document.getElementById('photos').click();
+        });
+    });
 </script>
 </html>

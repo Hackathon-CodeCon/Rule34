@@ -37,11 +37,6 @@ namespace Rule.BL.Services
                 if (existsName && existsDescription)
                     throw new DuplicateItemException(ExceptionMessage(newEntity.Name));
 
-                var statusPost = await _statusPostRepository.Get()
-                   .FirstOrDefaultAsync(x => x.Status.ToUpper().Trim() == newEntity.StatusPost.Status.ToUpper().Trim());
-                var typePost = await _typePostRepository.Get()
-                   .FirstOrDefaultAsync(x => x.Type.ToUpper().Trim() == newEntity.TypePost.Type.ToUpper().Trim());
-
                 var entity = new Posts
                 {
                     Id = default,
@@ -49,11 +44,10 @@ namespace Rule.BL.Services
                     Description = newEntity.Description.Trim(),
                     FinishSum = newEntity.FinishSum,
                     CreationTime = newEntity.CreationTime,
-                    Users = default,
-                    StatusPost = statusPost,
-                    TypePost = typePost,
-                    Foundations = default,
-                    PicturesPosts = newEntity.PicturesPosts
+                    UsersId = newEntity.UsersId,
+                    StatusPostId = newEntity.StatusPostId,
+                    TypePostId = newEntity.TypePostId,
+                    Link = newEntity.Link.Trim()
                 };
 
                 await _repository.AddAsync(entity);
@@ -64,6 +58,18 @@ namespace Rule.BL.Services
             {
                 throw new ServerErrorException(ex.Message, ex);
             }
+        }
+
+        public async Task<int> GetStatusPostIdAsync(string status)
+        {
+            var statusPost = await _statusPostRepository.Get().FirstOrDefaultAsync(x => x.Status.ToUpper().Trim() == status.ToUpper().Trim());
+            return statusPost?.Id ?? 0; 
+        }
+
+        public async Task<int> GetTypePostIdAsync(string type)
+        {
+            var typePost = await _typePostRepository.Get().FirstOrDefaultAsync(x => x.Type.ToUpper().Trim() == type.ToUpper().Trim());
+            return typePost?.Id ?? 0; 
         }
 
         public async Task<ICollection<PostsDTO>> GetAllAsync()

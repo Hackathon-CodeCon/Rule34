@@ -47,7 +47,6 @@ namespace Rule.UI.Controllers
 
             try
             {
-                // Ваша логіка для взаємодії з базою даних
                 var user = await _service.GetUserByUsername(model.Username);
 
                 if (user == null)
@@ -62,8 +61,6 @@ namespace Rule.UI.Controllers
                     return View(model);
                 }
 
-                // Все гаразд, можна авторизувати користувача
-                // Наприклад, установка кукі або інше
                 return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
@@ -72,8 +69,6 @@ namespace Rule.UI.Controllers
                 return View(model);
             }
         }
-
-
 
         [HttpPost]
         public async Task<ActionResult> Logout()

@@ -17,11 +17,6 @@ namespace Rule.UI.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
         public IActionResult Mental()
         {
             return View();
