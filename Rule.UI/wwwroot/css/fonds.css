@@ -48,7 +48,7 @@ section {
     position: relative;
     width: 100%;
     height: 100vh;
-    background: url(./images/Дизайн\ без\ назви\ \(12\).png);
+    background: url('../images/Дизайн.png');
     background-size: cover;
     background-position: center;
     display: grid;
