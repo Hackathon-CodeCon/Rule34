@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 
 namespace Rule.UI.Controllers
 {
@@ -18,6 +17,11 @@ namespace Rule.UI.Controllers
         }
 
         public IActionResult Mental()
+        {
+            return View();
+        }
+
+        public IActionResult Zbory()
         {
             return View();
         }
