@@ -21,5 +21,17 @@ namespace Rule.UI.Controllers
         {
             return View();
         }
+
+        public IActionResult Mental()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SendPhoneNumber(string phoneNumber)
+        {
+            TempData["Message"] = "Ваш номер успішно передано, з вами скоро зв'яжуться";
+            return RedirectToAction("Index");
+        }
     }
 }
