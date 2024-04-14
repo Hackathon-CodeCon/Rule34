@@ -12,6 +12,7 @@ namespace Rule.DAL.Entities
         [MaxLength(1500)]
         public required string Description { get; set; }
         public required string Link { get; set; }
+        public required string SourceLink { get; set; }
 
         public string? Pictures { get; set; }
     }

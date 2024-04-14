@@ -12,6 +12,8 @@ namespace Rule.BL.Models
         public string Description { get; set; }
         [Required]
         public string Link { get; set; }
+        [Required]
+        public string SourceLink { get; set; }
 
         public string? Pictures { get; set; }
     }

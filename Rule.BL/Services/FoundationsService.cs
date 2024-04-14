@@ -42,6 +42,7 @@ namespace Rule.BL.Services
                     Name = newEntity.Name.Trim(),
                     Description = newEntity.Description.Trim(),
                     Link = newEntity.Link.Trim(),
+                    SourceLink = newEntity.SourceLink.Trim(),
                     Pictures = newEntity.Pictures.Trim()
                 };
 

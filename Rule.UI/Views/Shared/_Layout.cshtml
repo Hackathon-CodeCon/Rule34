@@ -17,7 +17,7 @@
           rel="stylesheet">
 </head>
 <body>
-    @* <header>
+    <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Rule.UI</a>
@@ -35,7 +35,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Foundations" asp-action="Index">Фонд</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Foundations" asp-action="GetAll" method="get">Фонд</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Posts" asp-action="Index">Пост</a>
@@ -52,7 +52,7 @@
                 </div>
             </div>
         </nav>
-    </header> *@
+    </header>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
