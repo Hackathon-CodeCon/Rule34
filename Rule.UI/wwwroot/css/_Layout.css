@@ -84,7 +84,9 @@
 
 
 .container {
-    margin-top: 100px; /* Adjust as needed */
+    padding: 0px;
+    margin-top: 90px;
+    max-width: 100%;
 }
 
 .navbarrr {
