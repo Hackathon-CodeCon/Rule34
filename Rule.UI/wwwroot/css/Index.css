@@ -46,7 +46,6 @@
   }
 
 .navbar {
-    border-radius: 10px;
     display: flex;
 }
 
@@ -54,7 +53,6 @@
     color: var(--bg-color);
     font-size: var(--p-font);
     font-weight: 500;
-    padding: 10px 22px;
     border-radius: 4px;
     transition: ease 0.4s;
 }
