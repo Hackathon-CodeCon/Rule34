@@ -18,7 +18,7 @@ body {
 .Container {
     width: 90%;
     /* зменшуємо ширину для адаптації */
-    max-width: 800px;
+    max-width:100%;
     /* максимальна ширина для комп'ютера */
     padding: 20px;
     margin: 0 auto;
