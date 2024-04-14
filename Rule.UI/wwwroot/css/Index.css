@@ -31,7 +31,6 @@
     right: 0;
     width: 100%;
     z-index: 1000;
-    display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: transparent;
@@ -45,19 +44,20 @@
     letter-spacing: 1px;
     color: var(--bg-color);
   }
-  
-  .navbar {
+
+.navbar {
+    border-radius: 10px;
     display: flex;
-  }
-  
-  .navbar a {
+}
+
+.navbar a {
     color: var(--bg-color);
     font-size: var(--p-font);
     font-weight: 500;
     padding: 10px 22px;
     border-radius: 4px;
     transition: ease 0.4s;
-  }
+}
   
   .navbar a:hover {
     background: var(--bg-color);
@@ -152,15 +152,25 @@
     text-align: center;
     margin-top: 5rem;
   }
-  
-  .container-box {
+
+  .container {
+      max-width:100%;
+      padding: 0px;
+  }
+
+.newletter {
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+}
+.container-box {
     background: var(--second-colour);
     border: 1px solid #f0eded;
     padding: 50px 10px;
     border-radius: 4px;
     transition: all 1s ease 0s;
     cursor: pointer;
-  }
+}
   
   .container-img img {
     height: 85px;
@@ -318,6 +328,18 @@
     transform: scale(1.04);
     cursor: pointer;
   }
+
+.shade {
+    background-color: aqua;
+}
+
+.body-container {
+    /*remove the container default padding attribute*/
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    /*increase width as per your need*/
+    max-width: 100%;
+}
   
   .newletter {
     display: flex;
@@ -476,6 +498,7 @@
       display: block;
     }
     .navbar {
+
       position: absolute;
       top: 0;
       right: -100%;

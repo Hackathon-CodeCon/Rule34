@@ -27,8 +27,8 @@ namespace Rule.BL.Services
         private string ExceptionMessage(object? value = null) =>
                value switch
                {
-                   int idt when value is int => $"Фонд з id: {idt} ще/вже не існує!",
-                   string namet when value is string => $"Фонд з назваю {namet} вже існує",
+                   int idt when value is int => $"Юзер з id: {idt} ще/вже не існує!",
+                   string namet when value is string => $"Юзер з назваю {namet} вже існує",
                    _ => "Something has gone wrong"
                };
 
