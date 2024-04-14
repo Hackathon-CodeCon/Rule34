@@ -30,6 +30,11 @@ namespace Rule.UI.Controllers
         {
             return View();
         }
+        
+        public IActionResult Pritulki()
+        {
+            return View();
+        }
 
         [HttpPost]
         public ActionResult SendPhoneNumber(string phoneNumber)

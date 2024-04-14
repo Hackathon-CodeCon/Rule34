@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="uk">
 <head>
     <meta charset="utf-8" />
@@ -46,13 +47,18 @@
                     </div>
 
                     <ul class="navbarrr col-2">
-                        <li><a href="#login"> Login </a> </li>
-                        <li><a href="#logout"> Logout </a> </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li><a asp-controller="Users" asp-action="Logout" method="post"> Logout </a> </li>
+                            <li>@User.Identity.Name</li>
+                        }
+                        else
+                        {
+                            <li><a asp-controller="Users" asp-action="Login" method="get"> Login </a> </li>
+                        }
                         <span class="nav-item m-1" style="color: antiquewhite;">
                             <a href="#profile"><i class="fa-regular fa-user"></i></a>
                         </span>
-
-
                     </ul>
                 </div>
             </div>

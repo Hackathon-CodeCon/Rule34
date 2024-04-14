@@ -61,6 +61,12 @@ namespace Rule.UI.Controllers
                     return View(model);
                 }
 
+                // Create the identity from the user info
+                var identity = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, user.Username) }, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                // Sign in the user
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
+
                 return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
@@ -69,6 +75,7 @@ namespace Rule.UI.Controllers
                 return View(model);
             }
         }
+
 
         [HttpPost]
         public async Task<ActionResult> Logout()
